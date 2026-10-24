@@ -34,7 +34,7 @@ const docs: Record<string, Doc> = {
         heading: "Para qué se usan",
         body: [
           "Únicamente para responder a tu consulta, preparar una propuesta y mantener la comunicación sobre el proyecto.",
-          "No se comparten con terceros ni se usan para envíos masivos.",
+          "No se venden ni se usan para envíos masivos. Para entregar el formulario, el sitio puede apoyarse en Web3Forms o Formspree, que reciben el mensaje y lo reenvían al correo del responsable. Esos proveedores aplican sus propias políticas de privacidad.",
         ],
       },
       {
@@ -47,7 +47,7 @@ const docs: Record<string, Doc> = {
       {
         heading: "Servicios externos",
         body: [
-          "Si el sitio usa WhatsApp, correo o herramientas de medición, esos servicios aplican sus propias políticas. Sus condiciones se detallan cuando se activen.",
+          "El formulario puede usar Web3Forms o Formspree para entregar el mensaje al correo de contacto. WhatsApp se abre solo cuando tú eliges ese canal. Estos servicios tienen sus propias políticas y pueden alojar datos fuera de Colombia.",
         ],
       },
     ],

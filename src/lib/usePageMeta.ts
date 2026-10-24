@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { site } from "@/lib/site";
+import { asset } from "@/lib/asset";
 
 type Meta = {
   title: string;
@@ -18,7 +19,7 @@ function setMeta(attribute: "name" | "property", key: string, value: string) {
   el.setAttribute("content", value);
 }
 
-const DEFAULT_IMAGE = "/work/valentina-ruiz/2-1600.webp";
+const DEFAULT_IMAGE = asset("work/valentina-ruiz/2-1600.webp");
 
 /** Metadatos por ruta sin añadir dependencias. */
 export function usePageMeta({ title, description, image = DEFAULT_IMAGE, type = "website" }: Meta) {

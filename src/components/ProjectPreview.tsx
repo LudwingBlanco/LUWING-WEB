@@ -1,8 +1,9 @@
 import type { CSSProperties } from "react";
 import type { Project } from "@/data/projects";
+import { asset } from "@/lib/asset";
 
 const img = (slug: string, file: string, size: 800 | 1600 = 800) =>
-  `/work/${slug}/${file}-${size}.webp`;
+  asset(`work/${slug}/${file}-${size}.webp`);
 
 export const previewUrls: Record<Project["preview"], string> = {
   kalle: "kalle17.co",

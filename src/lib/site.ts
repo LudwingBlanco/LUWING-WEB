@@ -12,14 +12,28 @@ export const site = {
 
   /* ── Completar antes de publicar ─────────────────────────────── */
   // Número de WhatsApp con indicativo del país, sin "+" ni espacios. Ej: 573001234567
-  whatsapp: "",
+  whatsapp: "573001696244",
   // Correo de contacto. Ej: hola@ludwingblanco.com
+  // (También se usa para el enlace "Enviar por correo" del formulario).
   email: "",
   // Enlaces sociales completos. Ej: https://instagram.com/tu-usuario
   instagram: "",
   linkedin: "",
   // Dominio final (sin barra al final). Ej: https://ludwingblanco.com
+  // En GitHub Pages déjalo vacío: se usa el origen actual y la ruta del repositorio.
   domain: "",
+
+  /* ── Envío del formulario ─────────────────────────────────────── */
+  // Opción A — Web3Forms (recomendado para GitHub Pages):
+  // 1. Entra a https://web3forms.com
+  // 2. Escribe el correo donde quieres recibir los mensajes.
+  // 3. Copia la "Access Key" que llega a tu correo y pégala aquí.
+  web3formsKey: "02c5c71c-bf68-49f7-bb4e-452de2f19011",
+  // Opción B — Formspree:
+  // 1. Crea un formulario en https://formspree.io
+  // 2. Copia el endpoint completo (ej. https://formspree.io/f/abcdwxyz).
+  // Si las dos están configuradas, se usa Web3Forms.
+  formspreeEndpoint: "",
   /* ────────────────────────────────────────────────────────────── */
 
   availability: "Agenda abierta para nuevos proyectos",

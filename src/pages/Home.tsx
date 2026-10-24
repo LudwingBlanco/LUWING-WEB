@@ -9,13 +9,14 @@ import { Pricing } from "@/sections/Pricing";
 import { FaqSection } from "@/sections/FaqSection";
 import { Contact } from "@/sections/Contact";
 import { usePageMeta } from "@/lib/usePageMeta";
+import { asset } from "@/lib/asset";
 
 export function Home() {
   usePageMeta({
     title: "Ludwing Blanco — Diseño y desarrollo web a medida en Bucaramanga",
     description:
       "Diseño y desarrollo de sitios web a medida para negocios, comercios y marcas personales en Bucaramanga y toda Colombia. Sin plantillas, trato directo y trabajo verificado.",
-    image: "/work/valentina-ruiz/2-1600.webp",
+    image: asset("work/valentina-ruiz/2-1600.webp"),
   });
 
   return (

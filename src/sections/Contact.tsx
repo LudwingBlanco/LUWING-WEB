@@ -89,8 +89,8 @@ export function Contact() {
                   {!isConfigured(site.linkedin) ? <li>• LinkedIn</li> : null}
                 </ul>
                 <p className="mt-3 text-[0.72rem] leading-relaxed text-white/55">
-                  Edita <code className="text-white/60">src/lib/site.ts</code>. Mientras tanto, el
-                  formulario no simula envíos.
+                  Edita <code className="text-white/60">src/lib/site.ts</code>. El formulario nunca
+                  simula un envío exitoso.
                 </p>
               </div>
             ) : null}

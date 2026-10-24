@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { getProject, projects } from "@/data/projects";
 import { BrowserFrame, PhoneFrame } from "@/components/Frames";
 import { Reveal } from "@/components/Reveal";
+import { asset } from "@/lib/asset";
 import { usePageMeta } from "@/lib/usePageMeta";
 import { NotFound } from "@/pages/NotFound";
 
@@ -36,7 +37,7 @@ function CaseContent({
   usePageMeta({
     title: `${p.name} — Caso de estudio | Ludwing Blanco`,
     description: p.summary,
-    image: `/work/${p.slug}/1-1600.webp`,
+    image: asset(`work/${p.slug}/1-1600.webp`),
     type: "article",
   });
 
@@ -306,7 +307,7 @@ function CaseContent({
             <Reveal variant="curtain">
               <figure>
                 <img
-                  src={`/work/${p.slug}/${p.images[0].file}-1600.webp`}
+                  src={asset(`work/${p.slug}/${p.images[0].file}-1600.webp`)}
                   alt={p.images[0].alt}
                   width={1600}
                   height={1067}
@@ -322,8 +323,8 @@ function CaseContent({
                 <Reveal key={image.file} delay={i * 80} variant="curtain">
                   <figure>
                     <img
-                      src={`/work/${p.slug}/${image.file}-800.webp`}
-                      srcSet={`/work/${p.slug}/${image.file}-800.webp 800w, /work/${p.slug}/${image.file}-1600.webp 1600w`}
+                      src={asset(`work/${p.slug}/${image.file}-800.webp`)}
+                      srcSet={`${asset(`work/${p.slug}/${image.file}-800.webp`)} 800w, ${asset(`work/${p.slug}/${image.file}-1600.webp`)} 1600w`}
                       sizes="(min-width: 640px) 45vw, 92vw"
                       alt={image.alt}
                       width={800}

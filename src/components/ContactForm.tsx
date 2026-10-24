@@ -1,5 +1,5 @@
 import { useEffect, useId, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { isConfigured, mailtoLink, plans, site, whatsappLink } from "@/lib/site";
 
 const services = [
@@ -19,6 +19,13 @@ const budgets = [
   "$1.500.000 – $3.000.000 COP",
   "Más de $3.000.000 COP",
 ];
+
+const delivery = {
+  web3forms: (import.meta.env.VITE_WEB3FORMS_KEY || site.web3formsKey).trim(),
+  formspree: (import.meta.env.VITE_FORMSPREE_ENDPOINT || site.formspreeEndpoint).trim(),
+};
+
+const hasDelivery = Boolean(delivery.web3forms || delivery.formspree);
 
 type Fields = {
   name: string;
@@ -43,7 +50,10 @@ type Status =
   | { kind: "error"; text: string }
   | { kind: "config"; text: string }
   | { kind: "whatsapp"; text: string }
-  | { kind: "copied"; text: string };
+  | { kind: "copied"; text: string }
+  | { kind: "sending"; text: string }
+  | { kind: "sent"; text: string }
+  | { kind: "failed"; text: string };
 
 export function ContactForm() {
   const [params] = useSearchParams();
@@ -97,8 +107,70 @@ export function ContactForm() {
     return next;
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const sendMessage = async (text: string, form: HTMLFormElement) => {
+    const formData = new FormData(form);
+    const subject = `Nuevo proyecto web — ${fields.name.trim()}`;
+    const payload = {
+      name: fields.name.trim(),
+      business: fields.business.trim(),
+      contact: fields.contact.trim(),
+      service: fields.service || "Por definir",
+      budget: fields.budget,
+      plan: selectedPlan || "No definido",
+      message: text,
+    };
+
+    let endpoint = "";
+    let body: Record<string, unknown> = {};
+
+    if (delivery.web3forms) {
+      endpoint = "https://api.web3forms.com/submit";
+      const botcheck = Boolean(formData.get("botcheck"));
+      body = {
+        access_key: delivery.web3forms,
+        subject,
+        from_name: "Portafolio Ludwing Blanco",
+        ...payload,
+        replyto: fields.contact.includes("@") ? fields.contact.trim() : undefined,
+        ...(botcheck ? { botcheck: true } : {}),
+      };
+    } else if (delivery.formspree) {
+      endpoint = delivery.formspree;
+      body = {
+        ...payload,
+        email: fields.contact.includes("@") ? fields.contact.trim() : undefined,
+        _subject: subject,
+        _gotcha: String(formData.get("_gotcha") ?? ""),
+      };
+    } else {
+      throw new Error("No hay un servicio de envío configurado.");
+    }
+
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = (await response.json().catch(() => null)) as {
+      success?: boolean;
+      ok?: boolean;
+      message?: string;
+      error?: string;
+    } | null;
+
+    if (!response.ok || data?.success === false || data?.ok === false) {
+      throw new Error(data?.message || data?.error || "No se pudo enviar el mensaje.");
+    }
+  };
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (status.kind === "sending") return;
+
     const nextErrors = validate(fields);
     setErrors(nextErrors);
 
@@ -112,6 +184,24 @@ export function ContactForm() {
 
     const text = buildMessage({ ...fields, service: fields.service || "Por definir" });
     setMessage(text);
+
+    if (hasDelivery) {
+      setStatus({ kind: "sending", text: "Enviando mensaje…" });
+      try {
+        await sendMessage(text, event.currentTarget);
+        setMessage("");
+        setStatus({
+          kind: "sent",
+          text: "Mensaje enviado. Gracias, te responderé personalmente.",
+        });
+      } catch {
+        setStatus({
+          kind: "failed",
+          text: "No se pudo enviar el mensaje. Revisa tu conexión o usa WhatsApp.",
+        });
+      }
+      return;
+    }
 
     const wa = whatsappLink(text);
     if (wa) {
@@ -148,15 +238,30 @@ export function ContactForm() {
     }
   };
 
-  const mail = mailtoLink(
-    `Consulta de ${fields.name || "proyecto"}`,
-    message || buildMessage({ ...fields, service: fields.service || "Por definir" }),
-  );
+  const fallbackText = message || buildMessage({ ...fields, service: fields.service || "Por definir" });
+  const mail = mailtoLink(`Consulta de ${fields.name || "proyecto"}`, fallbackText);
+  const wa = whatsappLink(fallbackText);
 
   const hasChannel = isConfigured(site.whatsapp) || isConfigured(site.email);
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-5">
+    <form onSubmit={onSubmit} noValidate className="grid gap-5" aria-busy={status.kind === "sending"}>
+      <input
+        type="checkbox"
+        name="botcheck"
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
+      <input
+        type="text"
+        name="_gotcha"
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
       {selectedPlan ? (
         <div className="flex items-center justify-between gap-3 rounded-[3px] border border-cobalt/50 bg-cobalt/10 px-4 py-2.5 text-sm">
           <span>
@@ -293,22 +398,45 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-4 pt-1 sm:flex-row sm:items-center">
-        <button type="submit" className="btn btn-light">
-          {hasChannel ? "Preparar mensaje" : "Revisar mensaje"}
+        <button
+          type="submit"
+          className="btn btn-light"
+          disabled={status.kind === "sending"}
+          aria-disabled={status.kind === "sending"}
+        >
+          {status.kind === "sending"
+            ? "Enviando…"
+            : hasDelivery
+              ? "Enviar mensaje"
+              : hasChannel
+                ? "Preparar mensaje"
+                : "Revisar mensaje"}
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.4" />
           </svg>
         </button>
         <p className="text-[0.78rem] leading-relaxed text-white/55">
-          {hasChannel
-            ? "No se envía nada automáticamente: revisas el mensaje antes de enviarlo."
-            : "Sin canal configurado, no se simula un envío exitoso."}
+          {hasDelivery
+            ? "Tu mensaje llega directo a mi correo. Te responderé personalmente."
+            : hasChannel
+              ? "Se abrirá WhatsApp o tu correo con el mensaje listo; envíalo desde la app."
+              : "Sin canal configurado, no se simula un envío exitoso."}
         </p>
       </div>
 
       <div aria-live="polite" className="min-h-6 text-sm">
         {status.kind !== "idle" ? (
-          <p className={status.kind === "error" ? "text-[#ff9a8a]" : "text-white/70"}>{status.text}</p>
+          <p
+            className={
+              status.kind === "error" || status.kind === "failed"
+                ? "text-[#ff9a8a]"
+                : status.kind === "sent"
+                  ? "text-[#a7e8b8]"
+                  : "text-white/70"
+            }
+          >
+            {status.text}
+          </p>
         ) : null}
       </div>
 
@@ -327,11 +455,21 @@ export function ContactForm() {
         </div>
       ) : null}
 
-      {status.kind === "config" || status.kind === "copied" ? (
+      {status.kind === "config" || status.kind === "copied" || status.kind === "failed" ? (
         <div className="flex flex-wrap gap-3">
           <button type="button" className="btn btn-on-dark !py-2.5 !text-[0.85rem]" onClick={copy}>
             Copiar mensaje
           </button>
+          {wa ? (
+            <a
+              href={wa}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-on-dark !py-2.5 !text-[0.85rem]"
+            >
+              Abrir WhatsApp
+            </a>
+          ) : null}
           {mail ? (
             <a href={mail} className="btn btn-on-dark !py-2.5 !text-[0.85rem]">
               Enviar por correo
@@ -341,8 +479,16 @@ export function ContactForm() {
       ) : null}
 
       <p className="text-[0.72rem] leading-relaxed text-white/55">
-        Al escribirme aceptas que use tus datos únicamente para responder a esta consulta. No comparto
-        tu información con terceros. *
+        Campos marcados con * son obligatorios. Al escribirme aceptas que use tus datos únicamente
+        para responder a esta consulta. El envío puede pasar por Web3Forms o Formspree, que lo
+        reenvían a mi correo y no lo usan para publicidad. Lee la{" "}
+        <Link
+          to="/legal/privacidad"
+          className="text-white/80 underline underline-offset-2 transition-colors hover:text-white"
+        >
+          política de privacidad
+        </Link>
+        .
       </p>
     </form>
   );

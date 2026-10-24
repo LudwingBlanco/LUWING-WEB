@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import { asset } from "@/lib/asset";
 import { site } from "@/lib/site";
 
 const facts = [
@@ -54,7 +55,7 @@ export function About() {
 
             <Reveal variant="curtain" className="mt-5">
               <img
-                src="/work/_studio/desk.webp"
+                src={asset("work/_studio/desk.webp")}
                 alt="Espacio de trabajo moderno con luz natural"
                 width={1200}
                 height={800}
