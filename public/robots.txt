@@ -1,0 +1,5 @@
+user-agent: *
+allow: /
+
+# Cuando publiques el sitio, añade aquí la URL absoluta del sitemap:
+# sitemap: https://tu-dominio.com/sitemap.xml

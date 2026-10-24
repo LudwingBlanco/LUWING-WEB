@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ludwing Blanco — Diseño y desarrollo web en Bucaramanga</title>
+<meta name="theme-color" content="#ecebe5">
+<meta name="description" content="Páginas web a medida para negocios, marcas personales y emprendedores en Bucaramanga, Floridablanca y Santander.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ecebe5;--fg:#0d0d0d;--mut:#5c5b57;--ac:#2237ff;--bg2:#fff;--line:#0d0d0d;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0e0e;--fg:#ecebe5;--mut:#a3a29c;--ac:#4a5cff;--bg2:#1a1a1a;--line:#ecebe5;color-scheme:dark}}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 'Archivo',system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-weight:800;letter-spacing:-.035em;line-height:.95;margin:0}
+h1{font-size:clamp(2.8rem,8.2vw,7.6rem)}h2{font-size:clamp(2.2rem,5.6vw,4.8rem)}h3{font-size:1.5rem;letter-spacing:-.02em}
+p{margin:0}a{color:inherit}
+.w{max-width:1280px;margin:0 auto;padding:0 28px}
+section{padding:110px 0}
+.lb{font-size:1rem;font-weight:500;color:var(--mut);margin-bottom:20px;display:block}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.btn{display:inline-block;padding:16px 26px;background:var(--fg);color:var(--bg);text-decoration:none;font:500 1rem 'Archivo';border:2px solid var(--fg);cursor:pointer;transition:background .15s,color .15s,transform .15s}
+.btn:hover{background:var(--ac);border-color:var(--ac);color:#fff;transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--fg)}
+.btn.o{background:none;color:var(--fg)}.btn.o:hover{background:var(--fg);color:var(--bg)}
+header{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:2px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav{display:flex;justify-content:space-between;align-items:center;height:62px}
+.logo{font-weight:800;text-decoration:none;letter-spacing:-.03em;font-size:1.15rem}
+.links{display:flex;gap:28px;align-items:center;font-size:.95rem}
+.links a{text-decoration:none}.links a:not(.btn):hover{text-decoration:underline;text-underline-offset:5px}
+.links .btn{padding:9px 18px;font-size:.9rem}
+#mb{display:none}
+.hero{padding:72px 0 0}
+.hg{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:end;margin-top:56px;padding-top:28px;border-top:2px solid var(--line)}
+.hg p{max-width:560px;font-size:1.2rem}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.st{display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:500;padding:12px 16px;border:2px solid var(--line)}
+.st i{width:9px;height:9px;border-radius:50%;background:#20c05a;animation:pl 2s infinite}@keyframes pl{50%{opacity:.25}}
+.fa{display:grid;grid-template-columns:repeat(3,1fr);margin-top:72px;border-top:2px solid var(--line);border-bottom:2px solid var(--line)}
+.fa div{padding:20px 0 20px 20px;border-left:2px solid var(--line);font-size:.9rem}.fa div:first-child{border:0;padding-left:0}.fa b{display:block;font-size:1.5rem;letter-spacing:-.03em}
+.hl{display:inline-block;overflow:hidden;vertical-align:bottom}.hl span{display:inline-block;transform:translateY(105%);animation:u .8s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d)}@keyframes u{to{transform:none}}
+.pj-wrap{padding:0 0 110px}
+.pj{position:sticky;display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:center;padding:44px;margin-bottom:28px;border:2px solid #0d0d0d;min-height:560px}
+.pj h3{font-size:clamp(2.2rem,4.2vw,3.8rem);letter-spacing:-.04em;margin:8px 0 14px}
+.pj .n{font-weight:800;font-size:.9rem}.pj p{max-width:380px}.pj .tg{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 24px}
+.pj .tg span{border:1.5px solid currentColor;padding:3px 10px;font-size:.78rem;font-weight:500}
+.pj .btn{background:#0d0d0d;color:#fff;border-color:#0d0d0d}
+.pj .bw{box-shadow:10px 10px 0 #0d0d0d;border:2px solid #0d0d0d;transition:transform .3s}
+.pj:hover .bw{transform:translate(-4px,-4px) rotate(-.6deg)}
+.tag{font-size:.9rem;font-weight:500}
+.bw{container-type:inline-size;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg2)}
+.bb{height:2.4em;display:flex;align-items:center;gap:5px;padding:0 12px;font-size:7px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.bb b{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.bb u{margin-left:10px;text-decoration:none;color:var(--mut);font-size:10px;background:var(--bg);padding:2px 12px;border-radius:99px}
+.bi{aspect-ratio:16/10;position:relative;overflow:hidden;padding:5%;font-size:2.2cqw;line-height:1.2}
+.bi h5{line-height:.95}
+.k0{background:#0c0c0c;color:#fff;font-family:'DM Sans',sans-serif}
+.k0 h5{font:700 6.5em/.85 'DM Sans';text-transform:uppercase;letter-spacing:-.05em;color:#ff4a1c}
+.k0 s{display:block;margin-top:1.4em;text-decoration:none;letter-spacing:.2em;text-transform:uppercase;font-size:.8em;color:#aaa}
+.k0 .g{position:absolute;right:5%;bottom:-8%;display:grid;grid-template-columns:repeat(3,7em);gap:.8em}
+.k0 .g i{aspect-ratio:3/4;background:linear-gradient(160deg,#2a2a2a,#161616);border-radius:3px}.k0 .g i:nth-child(2){background:#ff4a1c;translate:0 -1.5em}
+.k1{background:#09090a;color:#ece4d4;text-align:center}
+.k1::before{content:"";position:absolute;inset:4%;border:1px solid #ece4d433}
+.k1 h5{font:italic 5em 'Instrument Serif';margin-top:1.2em}
+.k1 s{display:block;text-decoration:none;font-size:.8em;letter-spacing:.3em;text-transform:uppercase;color:#a89c85;margin-top:1em}
+.k1 .g{position:absolute;left:50%;bottom:9%;translate:-50% 0;display:flex;gap:1em}
+.k1 .g i{width:5em;height:6.5em;border:1px solid #ece4d455;border-radius:5em 5em 0 0}
+.k2{background:#f4e6d0;color:#3a2012}
+.k2::after{content:"";position:absolute;right:-8%;top:-12%;width:55%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#d98a4c,#8b4a22)}
+.k2 h5{font:4.4em/.95 'Instrument Serif';max-width:7em;position:relative;z-index:1}
+.k2 s{display:inline-block;text-decoration:none;background:#3a2012;color:#f4e6d0;padding:.7em 1.6em;border-radius:99px;margin-top:1.6em;font-size:.9em;position:relative;z-index:1}
+.k2 .g{position:absolute;left:5%;bottom:6%;display:flex;gap:.8em}.k2 .g i{width:4.5em;height:4.5em;border-radius:50%;background:#e6cfae}.k2 .g i:nth-child(2){background:#c0713a}
+.k3{background:#0f2236;color:#e8eef4;background-image:linear-gradient(#ffffff0d 1px,transparent 1px),linear-gradient(90deg,#ffffff0d 1px,transparent 1px);background-size:3em 3em}
+.k3 h5{font:3.8em/1 'Instrument Serif';max-width:9em}
+.k3 s{display:block;text-decoration:none;color:#7fb0d6;font-size:.8em;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.4em}
+.k3 .g{position:absolute;left:5%;right:5%;bottom:6%;display:grid;grid-template-columns:repeat(3,1fr);gap:1em}
+.k3 .g i{height:3.4em;border-top:1px solid #7fb0d6}
+.k4{background:#e5dcff;color:#1b1633}
+.k4::before{content:"VR";position:absolute;right:2%;bottom:-18%;font:italic 20em/1 'Instrument Serif';opacity:.16}
+.k4 h5{font:5.2em/.9 'Instrument Serif'}
+.k4 s{display:block;text-decoration:none;margin-top:1.2em;font-size:.85em;letter-spacing:.18em;text-transform:uppercase}
+.k4 .g{position:absolute;left:5%;bottom:8%;display:flex;gap:.8em}.k4 .g i{width:9em;height:5.5em;background:#fff8;border-radius:.6em}.k4 .g i:nth-child(2){background:#1b1633}
+
+.bw{border-radius:0}
+.sl{border-top:2px solid var(--line);margin-top:48px}
+.sl div{display:grid;grid-template-columns:1fr 1.3fr;gap:20px;padding:22px 12px;border-bottom:2px solid var(--line);align-items:baseline;transition:background .15s,color .15s}
+.sl div:hover{background:var(--fg);color:var(--bg)}.sl div:hover p{color:var(--bg)}
+.sl b{font-size:.85rem}.sl span{font-size:1.6rem;font-weight:800;letter-spacing:-.03em}.sl p{color:var(--mut);font-size:.95rem}
+.blue{background:var(--ac);color:#fff}
+.blue h2{max-width:1000px}.blue p{font-size:1.25rem;max-width:620px;margin-top:36px}
+.pc{display:grid;grid-template-columns:1fr 1.6fr;gap:60px}
+.pc h2{position:sticky;top:100px;align-self:start}
+.pc ol{list-style:none;margin:0;padding:0;border-top:2px solid var(--line)}
+.pc li{display:grid;grid-template-columns:90px 1fr;padding:26px 0;border-bottom:2px solid var(--line);}
+.pc li b{font-size:2.6rem;letter-spacing:-.05em;line-height:1;font-weight:800}.pc li p{color:var(--mut);margin-top:4px}
+.pl{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--line);margin-top:48px}
+.pn{padding:34px;display:flex;flex-direction:column;gap:16px;border-left:2px solid var(--line)}.pn:first-child{border:0}
+.pn.f{background:var(--fg);color:var(--bg)}.pn.f .btn{background:var(--bg);color:var(--fg);border-color:var(--bg)}
+.pp{font-size:1.9rem;font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.pn ul{margin:0;padding:0;list-style:none;display:grid;gap:9px;font-size:.95rem}.pn li::before{content:"+ ";font-weight:800}
+.pn .btn{margin-top:auto;text-align:center}.note{font-size:.85rem;color:var(--mut);margin-top:18px}
+.two{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+details{border-bottom:2px solid var(--line);padding:20px 0}details:first-child{border-top:2px solid var(--line)}
+summary{cursor:pointer;font-weight:500;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";font-weight:800}details[open] summary::after{content:"−"}details p{margin-top:10px;color:var(--mut)}
+.ink{background:var(--fg);color:var(--bg)}
+.ink .note,.ink label{color:inherit;opacity:.7}
+form{display:grid;gap:18px}label{display:grid;gap:4px;font-size:.9rem}
+input,select,textarea{font:400 1.05rem 'Archivo';color:var(--bg);background:none;border:0;border-bottom:2px solid var(--bg);padding:10px 0;border-radius:0}
+select option{color:#0d0d0d}input:focus,select:focus,textarea:focus{outline:0;border-color:var(--ac)}
+textarea{min-height:100px;resize:vertical}
+.ink .btn{background:var(--bg);color:var(--fg);border-color:var(--bg)}.ink .btn:hover{background:var(--ac);color:#fff;border-color:var(--ac);box-shadow:3px 3px 0 var(--bg)}
+#stt{font-size:.9rem;min-height:1.4em}
+footer{padding:22px 0;font-size:.85rem;border-top:2px solid var(--bg)}footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+dialog{width:min(960px,calc(100% - 24px));max-height:92vh;overflow:auto;background:var(--bg);color:var(--fg);border:2px solid var(--line);padding:28px;border-radius:0}
+dialog::backdrop{background:#000b}dialog[open]{animation:dg .3s}@keyframes dg{from{opacity:0;transform:translateY(20px)}}
+.dh{display:flex;justify-content:space-between;gap:16px;align-items:start;margin-bottom:20px}.dh h3{font-size:2.4rem;letter-spacing:-.04em}.dh p{font-size:.9rem;margin-top:6px}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin:26px 0}.dg h4{margin:0 0 6px;font-size:1rem;color:var(--ac)}
+.dg p,.dg li{font-size:.95rem}.dg ul{margin:0;padding-left:18px}
+.tg{display:flex;flex-wrap:wrap;gap:6px}
+dialog .tg span{border:1.5px solid var(--line);padding:3px 10px;font-size:.78rem}
+
+@media (max-width:860px){
+.hg,.two,.pc,.pl,.pj{grid-template-columns:1fr}.pj{position:relative;top:auto!important;padding:24px;min-height:0}.pc h2{position:static}
+.fa{grid-template-columns:1fr}.fa div{border:0;border-top:2px solid var(--line);padding-left:0}.fa div:first-child{border:0}
+.pn{border-left:0;border-top:2px solid var(--line)}.pn:first-child{border:0}.sl div{grid-template-columns:1fr}
+section{padding:72px 0}
+#mb{display:block;background:none;border:2px solid var(--line);color:var(--fg);padding:7px 14px;font:500 .9rem 'Archivo'}
+.links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:18px;padding:22px 28px;background:var(--bg);border-bottom:2px solid var(--line)}.links.o{display:flex}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.hl span{transform:none}.rv,.pc li{opacity:1;transform:none}.pj{position:relative}}
+</style>
+</head>
+<body>
+<header><div class="w"><nav aria-label="Principal"><a class="logo" href="#inicio">Ludwing Blanco</a>
+<button id="mb" aria-expanded="false" aria-controls="lk">Menú</button>
+<div class="links" id="lk"><a href="#trabajo">Proyectos</a><a href="#servicios">Servicios</a><a href="#proceso">Proceso</a><a href="#planes">Planes</a><a class="btn" href="#contacto">Cotizar</a></div></nav></div></header>
+<main>
+<section class="hero" id="inicio"><div class="w">
+<h1><span class="hl"><span style="--d:.05s">Webs a medida</span></span><br><span class="hl"><span style="--d:.15s">para negocios que</span></span><br><span class="hl"><span style="--d:.25s">quieren crecer.</span></span></h1>
+<div class="hg"><div><p>Soy Ludwing Blanco, ingeniero industrial. Diseño y desarrollo páginas web personalizadas para que tu negocio proyecte una imagen profesional y la gente sepa cómo contactarte.</p>
+<div class="cta"><a class="btn" href="#contacto">Hablemos de tu proyecto</a><a class="btn o" href="#trabajo">Explorar proyectos</a></div></div>
+<div class="st"><i></i>Recibiendo proyectos nuevos en Bucaramanga</div></div>
+<div class="fa"><div><b>Bucaramanga</b>y área metropolitana</div><div><b>A medida</b>sin plantillas</div><div><b>Trato directo</b>conmigo, de principio a fin</div></div>
+</div></section>
+
+<section id="trabajo" style="padding-bottom:0"><div class="w">
+<span class="lb">Cinco proyectos de muestra</span><h2 style="margin-bottom:56px">Una web distinta para cada marca.</h2>
+<div class="pj-wrap" id="pj"></div></div></section>
+
+<section id="servicios" style="padding-top:0"><div class="w">
+<span class="lb">Servicios</span><h2>Lo que puedo hacer por tu negocio.</h2>
+<div class="sl" id="sl"></div></div></section>
+
+<section class="blue" id="enfoque"><div class="w rv"><span class="lb">Por qué ingeniería industrial</span>
+<h2>Una web también es un proceso bien diseñado.</h2>
+<p>Mi formación me enseñó a mirar un negocio como un sistema: procesos, tiempos, eficiencia y experiencia del cliente. Lo aplico para que tu sitio sea claro, esté ordenado y tenga un objetivo: que el visitante entienda qué ofreces y cómo contactarte.</p></div></section>
+
+<section id="proceso"><div class="w pc">
+<h2>Cómo trabajamos.</h2>
+<ol id="pr">
+<li><b>01</b><div><h3>Descubrimiento</h3><p>Conocer el negocio, sus objetivos y sus clientes.</p></div></li>
+<li><b>02</b><div><h3>Planificación</h3><p>Definir estructura, contenido y funcionalidades.</p></div></li>
+<li><b>03</b><div><h3>Diseño</h3><p>Establecer la identidad visual y la experiencia de usuario.</p></div></li>
+<li><b>04</b><div><h3>Desarrollo</h3><p>Construir la página y adaptar todos los componentes a dispositivos.</p></div></li>
+<li><b>05</b><div><h3>Validación</h3><p>Probar navegación, formularios, enlaces y rendimiento.</p></div></li>
+<li><b>06</b><div><h3>Publicación</h3><p>Desplegar el sitio y acompañar la entrega según el alcance contratado.</p></div></li>
+</ol></div></section>
+
+<section id="planes" style="padding-top:0"><div class="w">
+<span class="lb">Planes</span><h2>Referencias de precio.</h2>
+<div class="pl">
+<div class="pn"><h3>Esencial</h3><div class="pp">Desde $400.000 COP</div><ul><li>Landing page o sitio de una página</li><li>Diseño personalizado y responsive</li><li>Formulario o botón de WhatsApp</li><li>Metadatos básicos</li></ul><a class="btn o" href="#contacto">Cotizar Esencial</a></div>
+<div class="pn f"><h3>Profesional</h3><div class="pp">[Precio según alcance]</div><ul><li>Sitio de varias secciones o páginas</li><li>Dirección visual desarrollada</li><li>Animaciones y optimización de rendimiento</li><li>SEO técnico básico</li></ul><a class="btn" href="#contacto">Cotizar Profesional</a></div>
+<div class="pn"><h3>Integral</h3><div class="pp">Hasta $3.000.000 COP</div><ul><li>Sitio completo con identidad digital</li><li>Funcionalidades a medida</li><li>Secciones o páginas de detalle</li><li>Acompañamiento en la publicación</li></ul><a class="btn o" href="#contacto">Cotizar Integral</a></div></div>
+<p class="note">Son referencias, no cotizaciones definitivas. Dominio, hosting, mantenimiento y servicios externos se cotizan por separado. Las funcionalidades adicionales se acuerdan antes de empezar.</p></div></section>
+
+<section id="faq" style="padding-top:0"><div class="w two"><div><span class="lb">Preguntas frecuentes</span><h2>Antes de escribirme.</h2><p class="note">Las condiciones se confirman por escrito en cada cotización.</p></div>
+<div>
+<details><summary>¿Cuánto tarda un proyecto?</summary><p>Depende del alcance y de qué tan rápido se entregue el contenido. El plazo va en la cotización [configurable].</p></details>
+<details><summary>¿El diseño es personalizado?</summary><p>Sí. Cada sitio parte de tu marca y tu sector; no reutilizo plantillas cambiando colores.</p></details>
+<details><summary>¿Incluye dominio y hosting?</summary><p>Se cotizan por separado. Te oriento según tu proyecto.</p></details>
+<details><summary>¿Se ve bien en el celular?</summary><p>Sí. Se prueba en móvil, tableta y escritorio.</p></details>
+<details><summary>¿Cómo son los pagos?</summary><p>Forma y porcentajes se definen en la propuesta [configurable].</p></details>
+<details><summary>¿Hay mantenimiento y modificaciones?</summary><p>Se acuerdan según el alcance contratado [configurable].</p></details></div></div></section>
+
+<section class="ink" id="contacto"><div class="w two">
+<div><span class="lb">Contacto</span><h2>¿Empezamos tu proyecto?</h2><p class="note" style="font-size:1.1rem;opacity:.85;max-width:420px;margin-top:24px">Completa el formulario y se abrirá WhatsApp con tu mensaje listo para enviar. Te respondo personalmente.</p>
+<div class="cta"><a class="btn" id="wa" href="#contacto">Escribir por WhatsApp</a></div></div>
+<form id="f" novalidate>
+<label>Nombre<input name="n" required autocomplete="name"></label>
+<label>Negocio<input name="b" autocomplete="organization"></label>
+<label>Servicio de interés<select name="s" id="sel"></select></label>
+<label>Presupuesto aproximado<select name="p"><option>Aún no lo sé</option><option>Hasta $400.000</option><option>$400.000 – $1.500.000</option><option>$1.500.000 – $3.000.000</option><option>Más de $3.000.000</option></select></label>
+<label>Descripción del proyecto<textarea name="d" required></textarea></label>
+<button class="btn" type="submit">Enviar por WhatsApp</button><p id="stt" role="status"></p></form></div></section>
+</main>
+<footer class="ink"><div class="w"><span>© <span id="y"></span> Ludwing Blanco · Bucaramanga, Colombia</span><span>[email@tudominio.com] [Instagram] [LinkedIn]</span></div></footer>
+<dialog id="dg" aria-labelledby="dt"><div class="dh"><div><h3 id="dt"></h3><p id="ds"></p></div><button class="btn o" id="dc">Cerrar ✕</button></div><div id="dm"></div><div class="dg" id="db"></div><div class="cta" id="dq"></div></dialog>
+<script>
+const WHATSAPP="57XXXXXXXXXX"; // Reemplaza por tu número con indicativo, sin + ni espacios
+const $=s=>document.querySelector(s);
+const P=[
+{n:"KALLE 17",u:"kalle17.co",s:"Moda y streetwear",sv:["UI/UX","E-commerce ligero","Responsive"],h:"<h5>Drop<br>04</h5><s>Camisetas · Hoodies · Gorras</s><div class='g'><i></i><i></i><i></i></div>",d:"Tienda de ropa urbana que lanza colecciones por drops.",p:"Una marca de streetwear vive de la novedad y necesita impacto visual y un camino corto de la prenda al pedido.",a:"Tipografía enorme, contraste alto y una retícula de producto limpia que deja protagonismo a la prenda.",f:["Catálogo por colecciones","Fichas de producto con tallas","Pedido por WhatsApp con la prenda elegida","Navegación móvil de una mano"],t:"Servicio sugerido: Sitios para emprendimientos y comercios",o:2},
+{n:"Tinta Negra Studio",u:"tintanegra.studio",s:"Tatuajes y marcas creativas",sv:["Identidad digital","Galería","Formulario de citas"],h:"<h5>Tinta Negra</h5><s>Estudio de tatuaje · Bucaramanga</s><div class='g'><i></i><i></i><i></i></div>",d:"Estudio de tatuaje con galería por estilos y solicitud de cita.",p:"Un estudio vende confianza y estilo: el visitante debe ver el trabajo antes de que se le pida nada.",a:"Fondo negro, serif editorial y marcos finos; las imágenes ocupan casi toda la pantalla.",f:["Galería filtrable por estilo","Perfil de cada artista","Formulario de solicitud de cita","Guía de cuidados del tatuaje"],t:"Servicio sugerido: UI/UX e identidad visual digital",o:5},
+{n:"Casa Cacao",u:"casacacao.co",s:"Comercio local",sv:["Sitio de comercio","SEO local","Responsive"],h:"<h5>Cacao hecho a mano</h5><s>Ver la carta</s><div class='g'><i></i><i></i><i></i></div>",d:"Chocolatería y cafetería artesanal en Floridablanca.",p:"Un comercio local necesita que lo encuentren, que se sepa qué ofrece y cuándo abre.",a:"Paleta cálida, formas redondeadas y una carta legible en el celular, que es desde donde se consulta.",f:["Carta por categorías","Horarios y ubicación","Pedido por WhatsApp","Metadatos para búsqueda local"],t:"Servicio sugerido: Sitios para emprendimientos y comercios",o:2},
+{n:"Arce &amp; Delgado",u:"arcedelgado.com",s:"Servicios profesionales",sv:["Web corporativa","Estructura","SEO básico"],h:"<s>Abogados · Santander</s><h5>Criterio jurídico, claridad en cada paso</h5><div class='g'><i></i><i></i><i></i></div>",d:"Firma de abogados con áreas de práctica y consulta inicial.",p:"Una firma debe transmitir seriedad y orden desde el primer vistazo, sin sonar fría.",a:"Azul sobrio, cuadrícula técnica y jerarquía editorial que ordena la información en capas.",f:["Áreas de práctica con detalle","Perfiles del equipo","Formulario de consulta","Sección de artículos"],t:"Servicio sugerido: Páginas web corporativas",o:1},
+{n:"Valentina Ruiz",u:"valentinaruiz.co",s:"Marca personal",sv:["Portafolio","Identidad personal","Responsive"],h:"<h5>Valentina<br>Ruiz</h5><s>Arquitecta · Diseño de interiores</s><div class='g'><i></i><i></i></div>",d:"Portafolio profesional de una arquitecta independiente.",p:"Una profesional independiente necesita que su obra hable primero y que su personalidad se note.",a:"Color suave, serif expresiva y proyectos como protagonistas, con la información personal al final.",f:["Proyectos destacados","Página sobre mí","Contacto directo","Carga rápida de imágenes"],t:"Servicio sugerido: Portafolios y páginas para marcas personales",o:3}];
+const mk=(i,c="")=>`<div class="bw ${c}"><div class="bb"><b></b><b></b><b></b><u>${P[i].u}</u></div><div class="bi k${i}">${P[i].h}</div></div>`;
+
+const C=[["#ff5a36","#0d0d0d"],["#d8d2c4","#0d0d0d"],["#f0c98f","#0d0d0d"],["#a9c8ea","#0d0d0d"],["#cbbcff","#0d0d0d"]];
+const S=[["Landing pages","Para campañas sin una página clara. Recibes una página enfocada en una sola acción."],["Web corporativa","Para empresas que necesitan verse confiables. Recibes un sitio con servicios, equipo y contacto."],["Emprendimientos y comercios","Para negocios sin presencia propia. Recibes un sitio que presenta tu oferta."],["Marca personal","Para profesionales que quieren mostrar su trabajo. Recibes un portafolio con tu historia y proyectos."],["Rediseño web","Para sitios desactualizados. Recibes estructura e imagen renovadas conservando lo útil."],["UI/UX e identidad digital","Para marcas sin lenguaje visual coherente. Recibes paleta, tipografía y componentes."],["Responsive, SEO básico y rendimiento","Para páginas lentas o que no se ven bien en móvil. Recibes ajustes de adaptación, metadatos y carga."]];
+$("#sl").innerHTML=S.map((s,i)=>`<div><span>${s[0]}</span><p>${s[1].split(". ")[0]}.<br><b style="font-size:inherit">${s[1].split(". ")[1]}</b></p></div>`).join("");
+$("#sel").innerHTML=S.map(s=>`<option>${s[0]}</option>`).join("");
+$("#pj").innerHTML=P.map((x,i)=>`<article class="pj" style="top:${76+i*14}px;background:${C[i][0]};color:${C[i][1]}"><div><h3>${x.n}</h3><span class="tag">${x.s}. Proyecto de muestra</span><p style="margin-top:12px">${x.d}</p><div class="tg">${x.sv.map(v=>`<span>${v}</span>`).join("")}</div><button class="btn" data-i="${i}">Ver el caso completo</button></div>${mk(i)}</article>`).join("");
+$("#pj").addEventListener("click",e=>{const b=e.target.closest("button");if(b)open_(b.dataset.i)});
+const dg=$("#dg");
+function open_(i){const x=P[i];$("#dt").innerHTML=x.n;$("#ds").textContent=x.s+". Proyecto de muestra";
+$("#dm").innerHTML=mk(i)+`<div class="tg" style="margin-top:18px">${x.sv.map(v=>`<span>${v}</span>`).join("")}</div>`;
+$("#db").innerHTML=`<div><h4>Problema</h4><p>${x.p}</p></div><div><h4>Enfoque de diseño</h4><p>${x.a}</p></div><div><h4>Funcionalidades</h4><ul>${x.f.map(v=>`<li>${v}</li>`).join("")}</ul></div>`;
+$("#dq").innerHTML=`<button class="btn" id="dw">Quiero algo así</button>`;
+$("#dw").onclick=()=>{$("#sel").selectedIndex=x.o;dg.close();location.hash="contacto"};dg.showModal()}
+$("#dc").onclick=()=>dg.close();dg.addEventListener("click",e=>{if(e.target===dg)dg.close()});
+const mb=$("#mb"),lk=$("#lk");
+mb.onclick=()=>{const o=lk.classList.toggle("o");mb.setAttribute("aria-expanded",o)};
+lk.addEventListener("click",e=>{if(e.target.tagName==="A"){lk.classList.remove("o");mb.setAttribute("aria-expanded","false")}});
+$("#y").textContent=new Date().getFullYear();
+addEventListener("keydown",e=>{if(e.key==="Escape"){lk.classList.remove("o");mb.setAttribute("aria-expanded","false")}});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.3});
+document.querySelectorAll(".rv,.pc li").forEach(el=>io.observe(el));
+const ok=!/X/.test(WHATSAPP);
+$("#wa").href=ok?`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola Ludwing, quiero hablar de mi proyecto web.")}`:"#contacto";
+$("#wa").onclick=e=>{if(!ok){e.preventDefault();$("#stt").textContent="Configura tu número de WhatsApp en el código (variable WHATSAPP)."}};
+$("#f").addEventListener("submit",e=>{e.preventDefault();const f=e.target,s=$("#stt");
+if(!f.n.value.trim()||!f.d.value.trim()){s.textContent="Completa tu nombre y la descripción del proyecto.";return}
+if(!ok){s.textContent="Aún no hay número de WhatsApp configurado, por eso no se envió nada.";return}
+const m=`Hola Ludwing, soy ${f.n.value}${f.b.value?" de "+f.b.value:""}.\nServicio: ${f.s.value}\nPresupuesto: ${f.p.value}\nProyecto: ${f.d.value}`;
+window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(m)}`,"_blank","noopener");s.textContent="Se abrió WhatsApp con tu mensaje. Debes enviarlo desde allí."});
+</script>
+</body>
+</html>
