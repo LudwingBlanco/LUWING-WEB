@@ -57,8 +57,7 @@ Casi todo lo editable está en **`src/lib/site.ts`**. Los campos vacíos se mues
 
 1. **Contacto**
    - `whatsapp`: ya configurado con `573001696244` (300 169 6244, Colombia).
-   - `email`: pendiente de configurar con el correo real.
-   - `instagram`, `linkedin`: URLs completas.
+   - `email`: ya configurado con `Ludwingblancocas@gmail.com`.
    - `domain`: dominio final, sin barra al final. Ej.: `https://ludwingblanco.com`. En GitHub Pages déjalo vacío: se usa el origen actual y la ruta del repositorio.
 
    Con WhatsApp configurado, el formulario abre la conversación con el mensaje listo. Nunca se simula un envío exitoso. Para envío directo al correo, configura Web3Forms o Formspree (ver “Formulario de contacto”).

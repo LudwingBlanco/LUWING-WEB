@@ -85,8 +85,6 @@ export function Contact() {
                 <ul className="mt-2 space-y-1 text-[0.78rem] text-white/55">
                   {!isConfigured(site.whatsapp) ? <li>• Número de WhatsApp</li> : null}
                   {!isConfigured(site.email) ? <li>• Correo de contacto</li> : null}
-                  {!isConfigured(site.instagram) ? <li>• Instagram</li> : null}
-                  {!isConfigured(site.linkedin) ? <li>• LinkedIn</li> : null}
                 </ul>
                 <p className="mt-3 text-[0.72rem] leading-relaxed text-white/55">
                   Edita <code className="text-white/60">src/lib/site.ts</code>. El formulario nunca

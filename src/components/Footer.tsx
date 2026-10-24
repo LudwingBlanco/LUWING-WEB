@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { isConfigured, mailtoLink, site, whatsappLink } from "@/lib/site";
+import { mailtoLink, site, whatsappLink } from "@/lib/site";
 
 export function Footer() {
   const wa = whatsappLink("Hola Ludwing, quiero hablar de mi proyecto web.");
@@ -53,15 +53,6 @@ export function Footer() {
                     <span className="text-white/55" title="Configura el correo en src/lib/site.ts">
                       [correo sin configurar]
                     </span>
-                  )}
-                </li>
-                <li>
-                  {isConfigured(site.instagram) ? (
-                    <a href={site.instagram} target="_blank" rel="noreferrer" className="link-line">
-                      Instagram
-                    </a>
-                  ) : (
-                    <span className="text-white/55">[Instagram]</span>
                   )}
                 </li>
               </ul>

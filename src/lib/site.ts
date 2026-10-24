@@ -13,12 +13,8 @@ export const site = {
   /* ── Completar antes de publicar ─────────────────────────────── */
   // Número de WhatsApp con indicativo del país, sin "+" ni espacios. Ej: 573001234567
   whatsapp: "573001696244",
-  // Correo de contacto. Ej: hola@ludwingblanco.com
-  // (También se usa para el enlace "Enviar por correo" del formulario).
-  email: "",
-  // Enlaces sociales completos. Ej: https://instagram.com/tu-usuario
-  instagram: "",
-  linkedin: "",
+  // Correo de contacto. (También se usa para el enlace "Enviar por correo" del formulario).
+  email: "Ludwingblancocas@gmail.com",
   // Dominio final (sin barra al final). Ej: https://ludwingblanco.com
   // En GitHub Pages déjalo vacío: se usa el origen actual y la ruta del repositorio.
   domain: "",
